@@ -6,6 +6,16 @@ contadorController.getContador = async (req, res) => {
      res.json(contador);
 };
 
+contadorController.getContadorPersonas = async (req, res) => {
+     const contador = await contadorModel.find({"modo":"personas"});
+     res.json(contador);
+};
+
+contadorController.getContadorObjetos = async (req, res) => {
+     const contador = await contadorModel.find({"modo":"objetos"});
+     res.json(contador);
+};
+
 contadorController.addContador = async (req, res) => {
      const contador = new contadorModel(req.body);
      await contador.save();

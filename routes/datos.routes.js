@@ -8,6 +8,6 @@ router.get('/', datosController.getDatos);
 router.get('/resetData', datosController.resetDatos);
 router.put('/:limite', datosController.updateDatos);
 //router.delete('/:id', datosController.deleteDatos);
-router.post('/signin/:id', authController.signIn);
+router.post('/signin', authController.signIn);
 
 module.exports = router;

@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ContadorSchema = new Schema({
-    contador: { type: String, require: true }
+    contador: { type: String, require: true },
+    modo: { type: String, require: true }
 }, {
     timestamps: true
 });
