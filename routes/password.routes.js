@@ -6,7 +6,7 @@ const passwordController= require('../controllers/password.controller');
 //passwordcontroller
 router.get('/', passwordController.getPassword);
 router.post('/', passwordController.addPassword);
-router.put('/:id', passwordController.updatePassword);
+router.put('/', passwordController.updatePassword);
 router.delete('/:id', passwordController.deletePassword);
 router.post('/signin', authController.signIn);
 

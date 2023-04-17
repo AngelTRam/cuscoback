@@ -16,12 +16,22 @@ passwordController.addPassword = async (req, res) => {
 };
 
 passwordController.updatePassword = async (req, res) => {
-     const { id } = req.params;
-     const password = {
-          password: req.body.password,
+     const { email, password, newpassword } = req.body;
+     // Valida que no reciba datos vacios
+     if (!email || !password || !newpassword) {
+          return res.status(400).json({ error: 'Missing parameters' });
+     }
+     // Busca el usuario en la base de datos por correo electrónico y contraseña
+     const user = await passwordModel.findOne({ email: email, password: password });
 
-     };
-     await passwordModel.findByIdAndUpdate(id, { $set: password }, { new: true });
+     if (!user) {
+          return res.status(404).json({ error: 'User not found' });
+     }
+
+     // Actualiza la contraseña del usuario
+     user.password = newpassword;
+     await user.save();
+
      res.json({ status: 'Password Updated' });
 };
 
